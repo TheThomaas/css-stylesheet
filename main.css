@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat');
+
+* {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.project-title {
+    font-size: 5rem;
+
+    display: block;
+    margin: 0 auto;
+}
+
+button {
+    font-size: 1.2rem;
+    border-radius: 15px;
+    border: none;
+    background-color: black;
+    color: white;
+    padding: 8px 15px;
+
+    display: block;
+    margin: 0 auto;
+}
