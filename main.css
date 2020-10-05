@@ -1,13 +1,34 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat');
 
 * {
+    box-sizing: border-box;
+}
+
+html {
     font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-size: 1em;
+    line-height: 1.4;
+    color: #011627;
+    background-color: #ffffff;
+    height: 100vh;
+
+}
+
+body {
+    background-color: #e2e2e2;
+    margin: 5%;
+    height: 89vh;
 }
 
 .project-title {
     font-size: 4.5rem;
+    margin-top: 10px;
+    margin-left: 15px;
+}
 
-    text-align: center;
+.project-description {
+    margin: 0 0 50px 20px;
 }
 
 button {
