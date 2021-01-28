@@ -1,21 +1,69 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat');
 
+body {
+    --text-color: #222;
+    --bkg-color: #E2E2E2;
+    --anchor-color: #ff8080;
+    --accent-main-color: rgb(199, 199, 199);
+
+    --accent-color: #ec2929;
+    --hover-color: #be1111;
+
+    --switch-off-color: #ccc;
+    --switch-on-color: var(--anchor-color);
+    --switch-knob-color: white;
+
+    --input-border: #8b8a8b;
+    --input-focus-h: 0;
+    --input-focus-s: 100%;
+    --input-focus-l: 75%;
+
+    --red: #e62246;
+    --blue: #5419dd;
+    --violet: #7215e2;
+    --yellow: rgb(211, 233, 18);
+}
+
+body.dark-mode {
+    --text-color: #e2e2e2;
+    --bkg-color:rgb(68, 68, 68);
+    --accent-main-color: #383838;
+
+    --accent-color: #ff8080;
+    --hover-color: #f56565;
+
+    --input-border: #8b8a8b;
+    --input-focus-h: 0;
+    --input-focus-s: 88%;
+    --input-focus-l: 68%;
+
+    --red: #ce3955;
+    --blue: #4918bd;
+    --violet: #bb86fc;
+    --yellow: rgb(220, 236, 74);
+}
+
 * {
     box-sizing: border-box;
 }
 
-html {
+body {
     font-family: 'Montserrat', sans-serif;
     font-weight: 400;
     font-size: 1em;
     line-height: 1.4;
-    color: #e2e2e2;
-    background-color: #1d1d1d;
-    height: 100vh;
+    color: var(--text-color);
+    background: var(--accent-main-color);
+    height: 100%;
 }
 
-body {
-    background-color: #353535;
+body.dark-mode img {
+    filter: brightness(.8) contrast(1.2);
+}
+
+.project {
+    background-color: var(--bkg-color);
+    color: var(--text-color);
     margin: 5%;
     height: 79vh;
     border-radius: 12px;
@@ -23,23 +71,163 @@ body {
 
 .project-title {
     font-size: 4.5rem;
+    margin: auto auto 0 auto;
     margin-top: 25px;
     margin-left: 15px;
 }
 
 .project-description {
-    margin: 0 0 50px 20px;
+    margin: 0 20px 20px 20px;
+    font-size: 1.5em;
+}
+
+.project-content {
     margin: 20px;
 }
 
-button {
+button, input[type="button"] {
     font-size: 1.2rem;
     border-radius: 15px;
     border: none;
-    background-color: #e2e2e2;
-    color: #1d1d1d;
+    background-color: var(--accent-color);
+    color: #E2E2E2;
     padding: 8px 15px;
+    margin: 5px 0;
 
-    display: block;
-    margin: 0 auto;
+    font-weight: bold;
+
 }
+
+button:hover, input[type="button"]:hover {
+    cursor: pointer;
+    background-color: var(--hover-color);
+}
+
+input[type="checkbox"] {
+    background-color: var(--accent-color);
+    border-radius: 12px;
+}
+
+a {
+    color: var(--accent-color);
+}
+
+a:hover {
+    color: var(--hover-color);
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.switch input { 
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--switch-off-color);
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: var(--switch-knob-color);
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: var(--switch-on-color);
+}
+
+input:focus + .slider {
+    box-shadow: 0 0 1px var(--switch-on-color);
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+.theme-toggler, h1 {
+    display: inline-block;
+}
+
+.theme-toggler {
+    float: right;
+    top: 50px;
+    right: 50px;
+
+    margin: 0;
+    padding: 0;
+}
+
+.input {
+    font-size: 16px;
+    font-size: max(16px, 1em);
+    font-family: inherit;
+    padding: 0.25em 0.5em;
+    background-color: #fff;
+    border: 2px solid var(--input-border);
+    border-radius: 4px;
+    transition: 180ms box-shadow ease-in-out;
+  }
+  
+.input:focus {
+    border-color: hsl(var(--input-focus-h), var(--input-focus-s), var(--input-focus-l));
+    box-shadow: 0 0 0 3px hsla(var(--input-focus-h), var(--input-focus-s), calc(var(--input-focus-l) + 40%), 0.8);
+    outline: 3px solid transparent;
+}
+
+.input:not(textarea) {
+    line-height: 1;
+    height: 2.25rem;
+}
+
+input[type=file] {
+    font-size: 0.9em;
+    padding-top: 0.35rem;
+}
+
+textarea.input {
+    resize: vertical;
+}
+
+.input[readonly] {
+    border-style: dotted;
+    cursor: not-allowed;
+    color: #777;
+}
+
+.input[disabled] {
+    --input-border: #ccc;
+    background-color: #eee;
+    cursor: not-allowed;
+}
+
+label {
+    font-size: 1.125rem;
+    font-weight: 500;
+    line-height: 1;
+}
+
+.input + label {
+    margin-top: 2rem;
+}
+  
